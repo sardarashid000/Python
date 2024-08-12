@@ -1,0 +1,27 @@
+<!-- college/templates/course_form.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<button id="displayChartBtn" class="btn btn-info mb-3">Display As Bar Chart</button>
+
+<!-- Container for the Bar Chart -->
+<div id="chartContainer" style="display: none;">
+    <img src="data:image/png;base64,{{ graphic }}" alt="Course Durations Chart">
+</div>
+<h2>{% if course.id %}Edit Course{% else %}Add Course{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- Display form fields and errors -->
+    {{ form.as_p }}
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<script>
+    document.getElementById('displayChartBtn').addEventListener('click', function() {
+        document.getElementById('chartContainer').style.display = 'block';
+    });
+    </script>
+{% endblock %}

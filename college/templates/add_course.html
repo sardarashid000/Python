@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add Course</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Include Django's CSRF token for form submission -->
+
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Course</button>
+    <!-- Submit button to submit the form -->
+
+</form>
+
+{% endblock %}

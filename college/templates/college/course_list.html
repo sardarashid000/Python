@@ -1,0 +1,30 @@
+{% extends 'college/base.html' %}
+
+{% block content %}
+<h2>Courses</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Teacher</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.course_id }}</td>
+            <td>{{ course.course_name }}</td>
+            <td>{{ course.duration }}</td>
+            <td>{{ course.teacher }}</td>
+            <td>
+                <a href="{% url 'edit_course' course.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{% url 'delete_course' course.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
